@@ -2,6 +2,7 @@
 #include "doctest.h"
 #include "profile.h"
 #include "network.h"
+#include <string>
 
     Profile p1("marco", "Marco");    
     Profile p2("polo", "Polo");    
@@ -42,15 +43,31 @@ TEST_CASE("TASK B") {
 
 TEST_CASE("TASK C") { 
     Network nw;
-    nw.addUser("mario", "Mario");
-    nw.addUser("luigi", "Luigi");
 
-    for(int i = 2; i < 20; i++) {
-        nw.addUser("mario" + to_string(i), "Mario" + to_string(i))
+    SUBCASE("addUser(user1, user2)") { 
+        CHECK(nw.addUser("mario", "Mario") == true);
+        CHECK(nw.addUser("luigi", "Luigi") == true);
+
+        nw.addUser("mario", "Mario");
+        nw.addUser("luigi", "Luigi");
+        for(int i = 2; i < 20; i++) {
+            nw.addUser("mario" + std::to_string(i), "Mario" + std::to_string(i));
+        }
+
+        CHECK(nw.addUser("user", "user") == false); 
     }
 
     SUBCASE("follow(user1, user2)") { 
-        
+        nw.addUser("mario", "Mario");
+        nw.addUser("luigi", "Luigi");
+        for(int i = 2; i < 20; i++) {
+            nw.addUser("mario" + std::to_string(i), "Mario" + std::to_string(i));
+        }
+
+        CHECK(nw.follow("mario", "luigi") == true);
+        CHECK(nw.follow("mario-", "mario") == false);
+        CHECK(nw.follow("mario1", "mario2") == false);
+        CHECK(nw.follow("mario2", "mario2") == true); 
+        CHECK(nw.follow("mario-3", "mario3") == false); 
     }
 }
-    
