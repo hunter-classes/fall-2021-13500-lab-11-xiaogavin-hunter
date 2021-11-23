@@ -5,7 +5,7 @@
 
 
 int main() { 
-    // Task A
+    std::cout << "Task A" << std::endl;
     Profile p1("marco", "Marco");    
     std::cout << p1.getUsername() << std::endl; // marco
     std::cout << p1.getFullName() << std::endl; // Marco (@marco)
@@ -18,7 +18,9 @@ int main() {
     std::cout << p2.getUsername() << std::endl; // tarma1
     std::cout << p2.getFullName() << std::endl; // Tarma Roving (@tarma1)
 
-    // Task B
+    std::cout << "\n-----------------------------------------\n";
+    std::cout << "Task B" << std::endl;
+
     Network nw;
     std::cout << nw.addUser("mario", "Mario") << std::endl;     // true (1)
     std::cout << nw.addUser("luigi", "Luigi") << std::endl;     // true (1)
@@ -33,7 +35,9 @@ int main() {
     std::cout << std::endl; 
     std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;     // false (0)
 
-    // Task C
+    std::cout << "\n-----------------------------------------\n";
+    std::cout << "Task C" << std::endl;
+    
     Network taskc;
     // add three users
     taskc.addUser("mario", "Mario");
